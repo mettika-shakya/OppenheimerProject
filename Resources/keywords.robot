@@ -35,10 +35,13 @@ verifyDispenseNowRedirection
 verifyDispenseNowBtnColor
     element should be visible   ${btn_dispenseNow}
 
-    ${button_color1}=    Get Element Attribute    ${btn_dispenseNow}        css=background-color
-#    ${button_color2}=    Get Element Attribute    ${btn_dispenseNow}        style
-    log to console  ${button_color1}
-#    log to console  ${button_color2}
+    ${button_color1}=    Get WebElement    ${btn_dispenseNow}
+    ${bg_color}    Call Method    ${button_color1}    value_of_css_property    background-color
+    ${button_color2}=    Get Element Attribute    ${btn_dispenseNow}  class
+
+    log to console  ${EMPTY}
+    log to console  ${bg_color}
+    log to console  ${button_color2}
 #    Should Be Equal As Strings      ${button_color}     "#dc3545"
 
 verifyDispenseNowBtnTxt
